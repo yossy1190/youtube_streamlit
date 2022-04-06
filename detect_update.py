@@ -1,6 +1,9 @@
+from encodings import utf_8
 from bs4 import BeautifulSoup
 import requests
 import re
+import line
+# import utf_8
 
 def detect_update():
     url="https://www.statusparty.jp/schedule/tokyo/ginza/13019/"
@@ -18,10 +21,13 @@ def detect_update():
 
     if new_elem==old_elem:
         print('更新はありません')
+        line.main("更新はありません")
         return True
     else:
         with open("old_elem.txt","w") as f:
             old_elem=f.write(new_elem)
         print('更新されました')
+        line.main("更新されました")
         return False
+    
 detect_update()

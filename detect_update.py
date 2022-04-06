@@ -21,6 +21,7 @@ def detect_update():
 
     if new_elem==old_elem:
         print('更新はありません')
+        line.main(f"更新はありません。リンクを確認してください。\n{url}")
         return True
     else:
         with open("old_elem.txt","w") as f:

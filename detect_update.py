@@ -21,13 +21,12 @@ def detect_update():
 
     if new_elem==old_elem:
         print('更新はありません')
-        line.main("更新はありません")
         return True
     else:
         with open("old_elem.txt","w") as f:
             old_elem=f.write(new_elem)
         print('更新されました')
-        line.main("更新されました")
+        line.main(f"もうすぐ満席です。リンクを確認してください。\n{url}")
         return False
     
 detect_update()

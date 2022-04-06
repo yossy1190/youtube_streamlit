@@ -23,6 +23,7 @@ def detect_update():
         print('更新はありません')
         line.main(f"更新はありません。")
         return True
+    
     else:
         with open("old_elem.txt","w") as f:
             old_elem=f.write(new_elem)

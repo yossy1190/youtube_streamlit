@@ -9,10 +9,14 @@ def detect_update():
     url="https://www.statusparty.jp/schedule/tokyo/ginza/13019/"
     res=requests.get(url)
     soup=BeautifulSoup(res.text,"html.parser")
-    new_elems=soup.select(".type_acceptable")
-    new_elem=str(new_elems[1])
-    print(new_elem)
-
+    
+    try:
+        femail=soup.select(".female")
+        new_elem=str(soup.select(".type_only_remaining"))
+        print(new_elem)
+    except:
+        new_elem=""
+        
     try:
         with open("old_elem.txt") as f:
             old_elem=f.read()
@@ -26,8 +30,8 @@ def detect_update():
     
     else:
         with open("old_elem.txt","w") as f:
-            old_elem=f.write(new_elem)
-        print('更新されました')
+            f.write(new_elem)
+        print('もうすぐ満席です。')
         line.main(f"もうすぐ満席です。リンクを確認してください。\n{url}")
         return False
     
